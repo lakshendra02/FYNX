@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FYNX</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.jpg" />
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f6f7fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #16a34a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Ping Server</h1>
+        <button onclick="ping()">Send Ping</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function ping() {
+            const res = await fetch("http://localhost:5000/ping");
+            const data = await res.json();
+            document.getElementById("result").innerText = data.message;
+        }
+    </script>
+</body>
+</html>
