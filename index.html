@@ -64,11 +64,17 @@
     </div>
 
     <script>
+        const BACKEND_URL =
+            window.location.hostname === "localhost"
+            ? "http://localhost:5000"
+            : "https://fynx.onrender.com";
+
         async function ping() {
-            const res = await fetch("http://localhost:5000/ping");
+            const res = await fetch(`${BACKEND_URL}/ping`);
             const data = await res.json();
             document.getElementById("result").innerText = data.message;
         }
     </script>
+
 </body>
 </html>
